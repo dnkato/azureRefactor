@@ -48,15 +48,15 @@ namespace UnitTests
         }
 
         [Theory]
-        [InlineData("pulp fiction", "Movies", "1; Diane; 2;pulp fiction;")]
-        public void TestMain(string arg0, string arg1, string consoleInput)
+        [InlineData("pulp fiction", "Movies", "500,1000", "1; Diane; 2;pulp fiction;")]
+        public void TestMain(string arg0, string arg1, string arg2, string consoleInput)
         {
             // Redirect the console input to a string, ';' is used to separate line inputs
             var stringReader = new StringReader(Util.FormatConsoleInput(consoleInput));
             Console.SetIn(stringReader);
 
             //Act
-            Program.Main(new string[] { arg0, arg1 });
+            Program.Main(new string[] { arg0, arg1, arg2 });
 
             // Assert
 
