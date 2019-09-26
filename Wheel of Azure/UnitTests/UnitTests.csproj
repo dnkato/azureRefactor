@@ -73,7 +73,6 @@
   <ItemGroup>
     <Compile Include="TestCategorizedPhrases.cs" />
     <Compile Include="TestGame.cs" />
-    <Compile Include="TestGameUI.cs" />
     <Compile Include="TestSingleLetter.cs" />
     <Compile Include="TestWheel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
