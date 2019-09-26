@@ -14,7 +14,7 @@ namespace UnitTests
     public class TestGame
     {
         [Theory]
-        [InlineData("abc", "1; Diane; bad;1;x;1;bad;b; 1;b;a; 2;abc;;", 1000, 6400)]
+        [InlineData("abc", "1; Diane; bad;1;a;1;bad;b; 1;b;a; 2;abc;;", 1000, 6400)]
         [InlineData("blues clues", "1; Diane; 1;b; 2;blues clues;;", 100, 5100)]
         [InlineData("dog", "1; Diane; 2;cat; 2;dog;;", 100, 5000)]
         [InlineData("cat", "1; Diane; 1; 2;cat;;", Wheel.LoseATurn, 5000)]
@@ -51,13 +51,5 @@ namespace UnitTests
             Assert.Equal(expected, actual);
         }
 
-
-
-        [Fact(Skip = "randomized phrases, will add test later") ]
-        public void TestProgramMain_OnePlayer()
-        {
-            // This is just to get code coverage on our main program :)
-            Program.Main(new string[] {"abc", "1\r\nDiane\r\n2\r\nabc\r\n\r\n" });
-        }
     }
 }
