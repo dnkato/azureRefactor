@@ -11,13 +11,10 @@ namespace Wheel_of_Azure
     {
         public Wheel wheel = new Wheel();
         public PhraseBoard phraseBoard;
-        //public Player playerOne;
         public List<Player> players = new List<Player>();
 
         ICategorizedPhrases catphrase;
-        
         private GameUI ui = new GameUI();
-       // private const string HardCodedPhrase = "abc";
 
 
         public Game(ICategorizedPhrases catphrase)
@@ -33,7 +30,6 @@ namespace Wheel_of_Azure
         public void Start()
         {
 
-            //playerOne = new Player(ui.GetPlayerName());
             foreach (string playerName in ui.GetPlayerNames())
             {
                 players.Add(new Player(playerName));
@@ -41,8 +37,8 @@ namespace Wheel_of_Azure
             int currentPlayer = 0;
             int roundWinner = 0;
 
-            ui.DisplayCat(catphrase);
             ui.DisplayWelcomeMessage(players);
+            ui.DisplayCat(catphrase);
 
             while (!phraseBoard.IsGameOver())
             {
@@ -84,7 +80,6 @@ namespace Wheel_of_Azure
             do
             {
 
-                ui.DisplayPlayerScore(playerOne);
                 ui.DisplayBoard(phraseBoard);
 
                 if (ui.GetUserChoice() == 1)
@@ -95,6 +90,9 @@ namespace Wheel_of_Azure
                 {
                     Solve(playerOne, out turnOver);
                 }
+
+                ui.DisplayPlayerScore(playerOne);
+
             } while (!(turnOver || phraseBoard.IsGameOver()));
 
         }
@@ -107,21 +105,21 @@ namespace Wheel_of_Azure
             int wheelAmount = wheel.WheelSpin();
             ui.DisplayWheelAmount(wheelAmount);
 
-            // The wheel landed at lose a turn, user turn ends
-            if (wheelAmount == Wheel.LoseATurn)
+            // If the player spins a value of LOSE A TURN or BANKRUPTCY, there turn is over...
+            switch (wheelAmount)
             {
-                ui.DisplayLoseTurn();
-                turnOver = true;
-                return;
+                case Wheel.LoseATurn:
+                    turnOver = true;
+                    return;
+                case Wheel.Bankruptcy:
+                    turnOver = true;
+                    playerOne.DeductCurrentScore(playerOne.TurnScore);
+                    return;
+                default:
+                    break;
             }
 
-            if(wheelAmount == Wheel.LoseATurn)
-            {
-                turnOver = true;
-                return;
-            }
-
-            // Ask the user to guess a letter
+            // Spin was good, so Ask the user to guess a letter
             char spinGuessLetter = ui.GetSpinGuessLetter(phraseBoard, playerOne);
 
             //if the phrase contains the character, the program tells the user of this and tell them how much they won. 

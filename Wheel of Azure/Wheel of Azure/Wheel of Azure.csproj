@@ -72,5 +72,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CategorizedPhrases\all.txt" />
+    <Content Include="CategorizedPhrases\city.txt" />
+    <Content Include="CategorizedPhrases\holiday.txt" />
+    <Content Include="CategorizedPhrases\microsoft.txt" />
+    <Content Include="CategorizedPhrases\movies.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

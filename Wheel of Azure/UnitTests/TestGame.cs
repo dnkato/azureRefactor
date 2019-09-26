@@ -18,6 +18,7 @@ namespace UnitTests
         [InlineData("blues clues", "1; Diane; 1;b; 2;blues clues;;", 100, 5100)]
         [InlineData("dog", "1; Diane; 2;cat; 2;dog;;", 100, 5000)]
         [InlineData("cat", "1; Diane; 1; 2;cat;;", Wheel.LoseATurn, 5000)]
+        [InlineData("cat", "1; Diane; 1; 2;cat;;", Wheel.Bankruptcy, 5000)]
         [InlineData("abc", "2; Diane; Wolf; 1;c; 1;x; 1;z; 2;abc;;", 100, 5100)]
         [InlineData("abc", "a; 4; ; ; ; ; 2;x; 2;x; 2;x; 2;x; 2; abc;;", 100, 5000)]
         public void TestGameStart_PlayerOneWins(string phrase, string consoleInput, int fixedWheelAmount, int expected)

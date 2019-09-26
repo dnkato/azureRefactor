@@ -114,10 +114,10 @@ namespace Wheel_of_Azure
             
             if(vowels.Contains(spinGuessLetter))
             {
-                Console.WriteLine("The price of a vowel is $600.");
-                if (player.TurnScore >= 600)
+                Console.WriteLine($"The price of a vowel is ${PhraseBoard.PointsToBuyAVowel}.");
+                if (player.TurnScore >= PhraseBoard.PointsToBuyAVowel)
                 {
-                    player.DeductCurrentScore(600);
+                    player.DeductCurrentScore(PhraseBoard.PointsToBuyAVowel);
                     Console.WriteLine("You've just bought the letter {0} and your total score is: ${1}", spinGuessLetter.ToString(), player.TurnScore);
                 } else
                 {
@@ -183,7 +183,7 @@ namespace Wheel_of_Azure
         /// <param name="playerOne"></param>
         internal void DisplayPlayerTurn(Player playerOne)
         {
-            Console.WriteLine($"\n{playerOne.Name}, it's now your turn!!!\n");
+            Console.WriteLine($"\n{playerOne.Name}, it's now your turn!!! You have ${playerOne.TurnScore}...\n");
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Wheel_of_Azure
         /// <param name="playerOne">The current player.</param>
         internal void DisplayPlayerScore(Player playerOne)
         {
-            Console.WriteLine($"Total Score: ${playerOne.TurnScore} ");
+            Console.WriteLine($"\nTotal Score: ${playerOne.TurnScore} ");
         }
 
         /// <summary>
@@ -247,8 +247,22 @@ namespace Wheel_of_Azure
         {
             if (!Console.IsOutputRedirected) DisplaySpinner();
 
-            string wheelResponse = wheelAmount > 0 ? $"The wheel landed at ${wheelAmount}" : "The wheel landed on BANKRUPT. You lose all your money!";
-            Console.WriteLine(wheelResponse);
+            string wheelValue;
+
+            switch (wheelAmount)
+            {
+                case Wheel.LoseATurn:
+                    wheelValue = "LOSE A TURN. You Lose your turn!";
+                    break;
+                case Wheel.Bankruptcy:
+                    wheelValue = "BANKRUPT. You lose all your money!";
+                    break;
+                default:
+                    wheelValue = $"${wheelAmount}.";
+                    break;
+            }
+
+            Console.WriteLine($"The wheel landed at {wheelValue}");
         }
 
         /// <summary>
@@ -271,14 +285,6 @@ namespace Wheel_of_Azure
         }
 
         /// <summary>
-        /// Displays a message indicating that the player's spin landed on "Lose A Turn".
-        /// </summary>
-        internal void DisplayLoseTurn()
-        {
-            Console.WriteLine("Sorry, you lose a turn");
-        }
-
-        /// <summary>
         /// Displays a message indicating that the attempt to solve the puzzle was unsuccessful.
         /// </summary>
         /// <param name="solveGuess"></param>
@@ -293,7 +299,7 @@ namespace Wheel_of_Azure
         /// <param name="solveGuess"></param>
         internal void DisplaySolveGuessSuccess(string solveGuess)
         {
-            Console.WriteLine($"You are correct! The answer is {solveGuess}.");
+            Console.WriteLine($"You are correct! The answer is {solveGuess}. You win ${PhraseBoard.PointsEarnedForSolving} for solving the puzzle.");
         }
 
         /// <summary>
