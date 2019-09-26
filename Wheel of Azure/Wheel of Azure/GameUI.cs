@@ -229,7 +229,7 @@ namespace Wheel_of_Azure
             if (players.Count == 1)
                 message = "You win!";
             else
-                message = $"Player {players[roundWinner].Name} wins the round and ${players[roundWinner].TurnScore}!!!";
+                message = $"{players[roundWinner].Name} wins the round and ${players[roundWinner].TurnScore}!!!";
 
             Console.WriteLine();
             if (!Console.IsOutputRedirected)
