@@ -8,6 +8,7 @@ namespace Wheel_of_Azure
     public class PhraseBoard
     {
         public const int PointsEarnedForSolving = 5000;
+        public const int PointsToBuyAVowel = 600;
 
         private string CorrectAnswer;
         private List<char> Board;
