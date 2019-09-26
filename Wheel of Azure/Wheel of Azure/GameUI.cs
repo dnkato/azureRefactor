@@ -118,7 +118,7 @@ namespace Wheel_of_Azure
                 if (player.TurnScore >= PhraseBoard.PointsToBuyAVowel)
                 {
                     player.DeductCurrentScore(PhraseBoard.PointsToBuyAVowel);
-                    Console.WriteLine("You've just bought the letter {0} and your total score is: ${1}", spinGuessLetter.ToString(), player.TurnScore);
+                    Console.WriteLine("You've just bought the letter {0} and your total score is: ${1}", spinGuessLetter.ToString(), player.TurnScore.ToString("N0"));
                 } else
                 {
                     bool isConsonant = false;
@@ -183,7 +183,7 @@ namespace Wheel_of_Azure
         /// <param name="playerOne"></param>
         internal void DisplayPlayerTurn(Player playerOne)
         {
-            Console.WriteLine($"\n{playerOne.Name}, it's now your turn!!! You have ${playerOne.TurnScore}...\n");
+            Console.WriteLine($"\n{playerOne.Name}, it's now your turn!!! You have ${playerOne.TurnScore.ToString("N0")}...\n");
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Wheel_of_Azure
         /// <param name="playerOne">The current player.</param>
         internal void DisplayPlayerScore(Player playerOne)
         {
-            Console.WriteLine($"\nTotal Score: ${playerOne.TurnScore} ");
+            Console.WriteLine($"\nTotal Score: ${playerOne.TurnScore.ToString("N0")} ");
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Wheel_of_Azure
             if (players.Count == 1)
                 message = "You win!";
             else
-                message = $"{players[roundWinner].Name} wins the round and ${players[roundWinner].TurnScore}!!!";
+                message = $"{players[roundWinner].Name} wins the round and ${players[roundWinner].TurnScore.ToString("N0")}!!!";
 
             Console.WriteLine();
             if (!Console.IsOutputRedirected)
@@ -258,7 +258,7 @@ namespace Wheel_of_Azure
                     wheelValue = "BANKRUPT. You lose all your money!";
                     break;
                 default:
-                    wheelValue = $"${wheelAmount}.";
+                    wheelValue = $"${wheelAmount.ToString("N0")}.";
                     break;
             }
 
@@ -272,7 +272,7 @@ namespace Wheel_of_Azure
         /// <param name="pointsEarned">The points earned for guessing correctly.</param>
         internal void DisplaySpinGuessLetterSuccess(char spinGuessLetter, int pointsEarned)
         {
-            Console.WriteLine($"The phrase indeed includes {spinGuessLetter}. You won ${pointsEarned}!");
+            Console.WriteLine($"The phrase indeed includes {spinGuessLetter}. You won ${pointsEarned.ToString("N0")}!");
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Wheel_of_Azure
         /// <param name="solveGuess"></param>
         internal void DisplaySolveGuessSuccess(string solveGuess)
         {
-            Console.WriteLine($"You are correct! The answer is {solveGuess}. You win ${PhraseBoard.PointsEarnedForSolving} for solving the puzzle.");
+            Console.WriteLine($"You are correct! The answer is {solveGuess}. You win ${PhraseBoard.PointsEarnedForSolving.ToString("N0")} for solving the puzzle.");
         }
 
         /// <summary>
