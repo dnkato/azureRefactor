@@ -49,19 +49,19 @@ namespace Wheel_of_Azure
             switch (cat)
             {
                 case "holiday":
-                    filePath = Path.GetFullPath(@"..\..\CategorizedPhrases\holiday.txt");
+                    filePath = Path.GetFullPath(@".\CategorizedPhrases\holiday.txt");
                     break;
                 case "movies":
-                    filePath = Path.GetFullPath(@"..\..\CategorizedPhrases\movies.txt");
+                    filePath = Path.GetFullPath(@".\CategorizedPhrases\movies.txt");
                     break;
                 case "microsoft":
-                    filePath = Path.GetFullPath(@"..\..\CategorizedPhrases\microsoft.txt");
+                    filePath = Path.GetFullPath(@".\CategorizedPhrases\microsoft.txt");
                     break;
                 case "city":
-                    filePath = Path.GetFullPath(@"..\..\CategorizedPhrases\city.txt");
+                    filePath = Path.GetFullPath(@".\CategorizedPhrases\city.txt");
                     break;
                 default:
-                    filePath = Path.GetFullPath(@"..\..\CategorizedPhrases\all.txt");
+                    filePath = Path.GetFullPath(@".\CategorizedPhrases\all.txt");
                     break;
 
             }

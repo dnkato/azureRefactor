@@ -26,5 +26,25 @@ namespace UnitTests
                 Assert.True(res);
             }
         }
+
+        [Fact]
+        public void TestGetPhrase()
+        {
+            var catphrase = new CategorizedPhrases();
+
+            // test the random category
+            var category = catphrase.category;
+            var phrase = catphrase.GetPhrase("all");
+            string empty = "";
+            Assert.NotEqual(phrase, empty);
+            Assert.NotEqual(category, empty);
+
+            // test each category
+            foreach (var cat in catphrase.categories)
+            {
+                Assert.NotEqual(catphrase.GetPhrase(cat), empty);
+            }
+
+        }
     }
 }

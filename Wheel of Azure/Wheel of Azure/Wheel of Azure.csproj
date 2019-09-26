@@ -73,11 +73,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CategorizedPhrases\all.txt" />
-    <Content Include="CategorizedPhrases\city.txt" />
-    <Content Include="CategorizedPhrases\holiday.txt" />
-    <Content Include="CategorizedPhrases\microsoft.txt" />
-    <Content Include="CategorizedPhrases\movies.txt" />
+    <Content Include="CategorizedPhrases\all.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CategorizedPhrases\city.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CategorizedPhrases\holiday.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CategorizedPhrases\microsoft.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CategorizedPhrases\movies.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
